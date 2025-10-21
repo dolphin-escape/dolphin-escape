@@ -3,30 +3,51 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     public Transform playerTransform;
-    private float leftXBound = 2f;
-    private float rightXBound = 200f;
+    public float moveSpeed = 5f; 
 
+    private float leftXBound = 0f;
+    private float cameraZPosition = -10f;
+    private float cameraYPosition = 0f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // FUNGSI BARU DITAMBAHKAN
     void Start()
     {
+        // Tentukan di mana kamera HARUSNYA berada saat game mulai
+        Vector3 initialPosition;
+
+        if (playerTransform.position.x > leftXBound)
+        {
+            initialPosition = new Vector3(playerTransform.position.x, cameraYPosition, cameraZPosition);
+        }
+        else
+        {
+            // Karena player mulai di X = -5, posisi awal kamera harusnya di leftXBound (X = 0)
+            initialPosition = new Vector3(leftXBound, cameraYPosition, cameraZPosition);
+        }
         
+        // Langsung "Snap" kamera ke posisi awal itu.
+        // Ini akan menghentikan gerakan "ngikutin" di awal game.
+        transform.position = initialPosition;
     }
 
-    // Update is called once per frame
-    void Update()
+    // Fungsi LateUpdate tetap sama seperti solusi saya sebelumnya
+    void LateUpdate()
     {
-        if (playerTransform.position.x < leftXBound)
+        // 1. Tentukan dulu target posisi kamera
+        Vector3 targetPosition;
+
+        if (playerTransform.position.x > leftXBound)
         {
-            transform.position = new Vector3(leftXBound, 0, -10);
+            // Jika player di sebelah kanan batas, targetnya adalah posisi X player
+            targetPosition = new Vector3(playerTransform.position.x, cameraYPosition, cameraZPosition);
         }
-        else if (playerTransform.position.x <= rightXBound)
+        else
         {
-            transform.position = new Vector3(playerTransform.position.x, 0, -10);
+            // Jika player di sebelah kiri batas, targetnya adalah batas itu sendiri (X=0)
+            targetPosition = new Vector3(leftXBound, cameraYPosition, cameraZPosition);
         }
-        else 
-        {
-            transform.position = new Vector3(rightXBound, 0, -10);
-        }
+
+        // 2. SELALU bergerak perlahan ke target
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
     }
 }
