@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Catcher
   - Water
+  - Box
   layers:
   - Default
   - TransparentFX
