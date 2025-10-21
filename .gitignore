@@ -1,0 +1,30 @@
+# Folder cache utama Unity. HARUS diabaikan.
+[Ll]ibrary/
+
+# Folder file sementara Unity
+[Tt]emp/
+
+# Folder build intermediate (hasil kompilasi script)
+[Oo]bj/
+
+# Folder hasil build game (executable, .apk, .ipa, dll.)
+[Bb]uild/
+[Bb]uilds/
+
+# Folder log Unity
+[Ll]ogs/
+
+# Folder pengaturan spesifik pengguna (seperti layout window editor)
+[Uu]ser[Ss]ettings/
+
+# File-file yang dibuat oleh IDE (Visual Studio, Rider, VS Code)
+.vs/
+.vscode/
+.idea/
+*.sln
+*.csproj
+*.userprefs
+
+# File sistem operasi
+.DS_Store
+Thumbs.db
