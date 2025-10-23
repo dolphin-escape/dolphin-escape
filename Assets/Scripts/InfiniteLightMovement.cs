@@ -4,7 +4,7 @@ public class InfiniteLightMovement : MonoBehaviour
 {
     public Transform[] waypoints;
     public float[] segmentSpeeds;
-    public float defaultSpeed = 2f;
+    public float defaultSpeed = 1.5f;
     public float arriveThreshold = 0.01f;
 
     public enum EasingType { Linear, EaseInOut, EaseIn, EaseOut, Smooth }
