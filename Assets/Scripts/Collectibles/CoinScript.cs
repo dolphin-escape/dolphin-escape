@@ -5,6 +5,8 @@ public class CoinScript : MonoBehaviour
     [SerializeField] private int value;
     private bool hasTriggered;
     private CoinManager coinManager;
+    public ParticleSystem particles;
+    public Animator animCoin;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
@@ -23,7 +25,11 @@ public class CoinScript : MonoBehaviour
         {
             hasTriggered = true;
             coinManager.ChangeCoins(value);
-            Destroy(gameObject);
+
+            particles.Play();
+
+            animCoin.SetTrigger("Collecr");
+            Destroy(gameObject, 1f);
         }
     }
 }
