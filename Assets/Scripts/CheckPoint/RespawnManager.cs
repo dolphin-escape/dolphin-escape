@@ -14,6 +14,7 @@ public class RespawnManager : MonoBehaviour
     public void Death()
     {
         transform.position = respawnPosition;
+        transform.rotation = Quaternion.identity;
     }
 
     public void SetRespawnPosition(Vector3 newPosition)

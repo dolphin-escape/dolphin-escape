@@ -3,30 +3,41 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     public Transform playerTransform;
-    private float leftXBound = 2f;
-    private float rightXBound = 200f;
+    public float moveSpeed = 5f; 
 
+    private float leftXBound = 0f;
+    private float cameraZPosition = -10f;
+    private float cameraYPosition = 0f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Vector3 initialPosition;
+
+        if (playerTransform.position.x > leftXBound)
+        {
+            initialPosition = new Vector3(playerTransform.position.x, cameraYPosition, cameraZPosition);
+        }
+        else
+        {
+            initialPosition = new Vector3(leftXBound, cameraYPosition, cameraZPosition);
+        }
         
+        transform.position = initialPosition;
     }
 
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        if (playerTransform.position.x < leftXBound)
+        Vector3 targetPosition;
+
+        if (playerTransform.position.x > leftXBound)
         {
-            transform.position = new Vector3(leftXBound, 0, -10);
+            targetPosition = new Vector3(playerTransform.position.x, cameraYPosition, cameraZPosition);
         }
-        else if (playerTransform.position.x <= rightXBound)
+        else
         {
-            transform.position = new Vector3(playerTransform.position.x, 0, -10);
+            targetPosition = new Vector3(leftXBound, cameraYPosition, cameraZPosition);
         }
-        else 
-        {
-            transform.position = new Vector3(rightXBound, 0, -10);
-        }
+
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
     }
 }
