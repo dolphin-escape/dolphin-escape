@@ -83,6 +83,13 @@ public class DetectCatcher : MonoBehaviour
             {
                 Debug.Log("Caught");
                 spriteRenderer.color = new Color(155 / 255f, 0 / 255f, 0 / 255f);
+
+                CatcherLightEffect lightEffect = collision.GetComponent<CatcherLightEffect>();
+                if (lightEffect != null)
+                {
+                    lightEffect.TriggerCaughtEffect();
+                }
+
                 RespawnManager.Instance.Death();
             }
             else
