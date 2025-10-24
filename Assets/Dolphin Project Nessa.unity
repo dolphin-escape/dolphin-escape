@@ -21335,6 +21335,10 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[42].y
       value: -0.5461173
       objectReference: {fileID: 0}
+    - target: {fileID: 1808390546092074338, guid: de3bdceab33384d4f8e40591c0cd46fc, type: 3}
+      propertyPath: blinkDuration
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 1808963342558582210, guid: de3bdceab33384d4f8e40591c0cd46fc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 42.17
