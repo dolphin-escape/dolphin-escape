@@ -79,6 +79,8 @@ public class WaterPlayerController : MonoBehaviour
         {
             rb.gravityScale = landGravityScale;
             FaceVelocitySmooth();
+            AirForces();
+            RotateTowardsInput();
         }
     }
 
@@ -92,6 +94,15 @@ public class WaterPlayerController : MonoBehaviour
 
         if (rb.linearVelocity.magnitude > maxSwimSpeed)
             rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, rb.linearVelocity.normalized * maxSwimSpeed, 0.2f);
+    }
+
+    void AirForces()
+    {
+        Vector2 targetVel = input.normalized * maxSwimSpeed * 2;
+        Vector2 velError = targetVel - rb.linearVelocity;
+        float accelMult = Mathf.Lerp(0.5f, 1f, input.magnitude);
+        Vector2 desiredA = Vector2.ClampMagnitude(velError / Time.fixedDeltaTime, swimAccel * accelMult);
+        rb.AddForce(desiredA * rb.mass, ForceMode2D.Force);
     }
 
     void RotateTowardsInput()
