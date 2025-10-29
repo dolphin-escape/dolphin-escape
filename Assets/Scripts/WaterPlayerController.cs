@@ -28,7 +28,7 @@ public class WaterPlayerController : MonoBehaviour
     [SerializeField] float rotationSpeed = 5f;
 
     Rigidbody2D rb;
-    Vector2 input;
+    public Vector2 input;
     bool inWater;
     bool facingRight = true;
 
