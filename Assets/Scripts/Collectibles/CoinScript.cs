@@ -28,7 +28,7 @@ public class CoinScript : MonoBehaviour
 
             particles.Play();
 
-            animCoin.SetTrigger("Collecr");
+            animCoin.SetTrigger("Collect");
             Destroy(gameObject, 1f);
         }
     }
