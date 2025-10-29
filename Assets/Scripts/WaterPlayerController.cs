@@ -29,7 +29,7 @@ public class WaterPlayerController : MonoBehaviour
 
     Rigidbody2D rb;
     public Vector2 input;
-    bool inWater;
+    public bool inWater;
     bool facingRight = true;
 
     void Awake()
