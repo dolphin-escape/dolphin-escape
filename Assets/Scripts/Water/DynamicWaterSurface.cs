@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// [ExecuteInEditMode]
+[ExecuteInEditMode]
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 public class DynamicWaterSurface : MonoBehaviour
 {
@@ -149,12 +149,8 @@ public class DynamicWaterSurface : MonoBehaviour
         }
     }
 
-    // void OnValidate()
-    // {
-    //     // Clamp values in editor
-    //     segments = Mathf.Max(10, segments);
-    //     width = Mathf.Max(0.1f, width);
-    //     height = Mathf.Max(0.1f, height);
-    //     GenerateWaterMesh();
-    // }
+    void OnValidate()
+    {
+        GenerateWaterMesh();
+    }
 }
