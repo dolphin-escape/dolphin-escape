@@ -5,7 +5,7 @@ public class FollowPlayer : MonoBehaviour
     public Transform playerTransform;
     public float moveSpeed = 10f; 
 
-    private float leftXBound = 0f;
+    private float leftXBound = 3.5f;
     private float cameraZPosition = -10f;
     private float cameraYPosition = 0f;
 
