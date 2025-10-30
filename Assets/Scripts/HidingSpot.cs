@@ -85,22 +85,20 @@ public class HidingSpot : MonoBehaviour
             return;
 
         DetectCatcher player = other.GetComponent<DetectCatcher>();
-        if (player != null)
-        {
-            player.RegisterHidingSpot(this);
-        }
+        DetectCatcherOld playerOld = other.GetComponent<DetectCatcherOld>();
+        if (player != null) player.RegisterHidingSpot(this);
+        if (playerOld != null) playerOld.RegisterHidingSpot(this);
     }
-    
+
     void OnTriggerExit2D(Collider2D other)
     {
         if (!other.CompareTag("Player"))
             return;
 
         DetectCatcher player = other.GetComponent<DetectCatcher>();
-        if (player != null)
-        {
-            player.UnregisterHidingSpot(this);
-        }
+        DetectCatcherOld playerOld = other.GetComponent<DetectCatcherOld>();
+        if (player != null) player.UnregisterHidingSpot(this);
+        if (playerOld != null) player.UnregisterHidingSpot(this);
     }
 
     public bool ContainsPoint(Vector2 worldPoint)
