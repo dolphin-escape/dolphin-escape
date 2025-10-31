@@ -1,11 +1,18 @@
 name: Actions 😎
 
-on: [push, pull_request]
+on: 
+  push:
+    branches: [main]
 
 jobs:
   build:
     name: Build my project ✨
     runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      contents: write
+      packages: write
+      pull-requests: write
     steps:
       # Checkout (without LFS)
       - name: Checkout repository
